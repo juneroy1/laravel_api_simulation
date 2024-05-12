@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GraphController;
 use App\Http\Controllers\PathFindingController;
+use App\Http\Controllers\BfsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +24,7 @@ Route::get('/test_dijkstra', [AuthController::class, 'test_dijkstra']);
 
 Route::get('/shortest-path/{start}/{end}', [GraphController::class, 'shortestPath']);
 Route::get('/pathfind', [PathFindingController::class, 'findPath']);
+Route::get('/bfs-shortest-path', [App\Http\Controllers\BfsController::class, 'shortestPath']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
