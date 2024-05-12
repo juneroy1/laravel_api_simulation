@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\NodeModel as Node;
-use App\Models\EdgeModel;
 use SplPriorityQueue;
 
 class DijkstraService
