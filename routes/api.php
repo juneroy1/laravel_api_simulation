@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GraphController;
-
+use App\Http\Controllers\PathFindingController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,6 +22,7 @@ Route::get('/user', [AuthController::class, 'get_user']);
 Route::get('/test_dijkstra', [AuthController::class, 'test_dijkstra']);
 
 Route::get('/shortest-path/{start}/{end}', [GraphController::class, 'shortestPath']);
+Route::get('/pathfind', [PathFindingController::class, 'findPath']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
