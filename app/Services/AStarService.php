@@ -16,15 +16,15 @@ class AStarService
 
     public function findPath($start, $goal)
     {
-        $openSet = new SplPriorityQueue();
-        $openSet->insert($start, 0);
+        $queue = new SplPriorityQueue();
+        $queue->insert($start, 0);
         $cameFrom = [];
         $gScore = [$start => 0];
         $fScore = [$start => $this->heuristic($start, $goal)];
         $closedSet = [];
         
-        while (!$openSet->isEmpty()) {
-            $current = $openSet->extract();
+        while (!$queue->isEmpty()) {
+            $current = $queue->extract();
             if ($current === $goal) {
                 return $this->reconstructPath($cameFrom, $current);
             }
@@ -35,14 +35,17 @@ class AStarService
                     continue;
                 }
                 $tentativeGScore = floatval($gScore[$current]) + floatval($cost);
-                // echo "$tentativeGScore";
-                echo "$neighbor - $gScore[$current] '-' $cost\n";
+                // echo "$current";
+                // echo "$neighbor - $gScore[$current] '-' $cost\n";
+                // echo "$neighbor - $gScore[$neighbor] '-' $cost\n";
                 // echo "$cost\n";
                 if (!isset($gScore[$neighbor]) || $tentativeGScore < $gScore[$neighbor]) {
                     $cameFrom[$neighbor] = $current;
                     $gScore[$neighbor] = $tentativeGScore;
                     $fScore[$neighbor] = $tentativeGScore + $this->heuristic($neighbor, $goal);
-                    $openSet->insert($neighbor, -$fScore[$neighbor]);
+                    $fs = $this->heuristic($neighbor, $goal);
+                    echo "$fs \n";
+                    $queue->insert($neighbor, -$fScore[$neighbor]);
                 }
             }
         }

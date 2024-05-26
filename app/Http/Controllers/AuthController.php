@@ -62,7 +62,7 @@ class AuthController extends Controller
     public function test_dijkstra(){
         // Example usage
             $graph = [
-                'A' => ['B' => 3, 'C' => 5, 'D' => 9],
+                'A' => ['B' => 3, 'C' => 1, 'D' => 9],
                 'B' => ['A' => 3, 'C' => 3, 'D' => 4, 'E' => 7],
                 'C' => ['A' => 5, 'B' => 3, 'D' => 2, 'F' => 8],
                 'D' => ['A' => 9, 'B' => 4, 'C' => 2, 'E' => 2, 'F' => 2],

@@ -10,11 +10,12 @@ class BfsController extends Controller
     public function shortestPath(Request $request)
     {
         $graph = [
-            'A' => ['B', 'C'],
-            'B' => ['C', 'D'],
-            'C' => ['D'],
-            'D' => []
+            'A' => ['B','C'],
+            'C' => ['D','B','A'],
+            'B' => ['A', 'C', 'D'],
+            'D' => ['B','C']
         ];
+        
 
         $start = 'A';
         $target = 'D';
