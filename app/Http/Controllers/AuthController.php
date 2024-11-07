@@ -46,7 +46,7 @@ class AuthController extends Controller
         }
 
         $user = $request->user();
-        $tokenResult = $user->createToken('tokenjuneroy')->accessToken;
+        $tokenResult = $user->createToken('juneroytest1')->accessToken;
 
         // $token = $tokenResult->plainTextToken;
 
